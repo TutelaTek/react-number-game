@@ -20,14 +20,18 @@ const fetchFonts = () => {
 
 export default function App() {
 
+  // App states
   const [userNumber, setUserNumber] = useState();
   const [guessRounds, setGuessRounds] = useState(0);
   const [dataLoaded, setDataLoaded] = useState(false);
-  
+
+  // loading data like fonts
   if(!dataLoaded){
     return <AppLoading startAsync={fetchFonts} onFinish={() => setDataLoaded(true)} onError={(err) => console.log(err)}/>;
   }
 
+  
+  // handlers
   const configureNewGameHandler = () => {
     setGuessRounds(0);
     setUserNumber(null);
@@ -42,8 +46,9 @@ export default function App() {
     setGuessRounds(numOfRounds);
   }
 
+  //screen selection
   let content = <StartGameScreen onStartGame={startGameHandler}/>;
-  
+
   if(userNumber && guessRounds <= 0){
     content = <GameScreen userChoice={userNumber} onGameOver={gameOverHandler}/>;
   }else if(guessRounds > 0){
@@ -57,6 +62,8 @@ export default function App() {
   );
 }
 
+
+// Style sheets
 const styles = StyleSheet.create({
   screen:{
     flex: 1

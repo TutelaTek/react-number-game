@@ -2,6 +2,7 @@ import React from 'react';
 import { View, Text, StyleSheet } from  'react-native';
 import Colors from '../constants/colors';
 
+// Header ui
 const Header = props => {
     return (
         <View style={styles.header}>
@@ -11,7 +12,7 @@ const Header = props => {
     );
 }
 
-
+//Styles sheet
 const styles = {
     header: {
         width: '100%',

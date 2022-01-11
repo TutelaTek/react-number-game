@@ -2,12 +2,16 @@ import React from 'react';
 
 import {View, StyleSheet} from 'react-native';
 
+
+// Card 
 const Card = props => {
     return <View style={{...styles.card, ...props.style}}>
         {props.children}
     </View>
 };
 
+
+// Styles sheet
 const styles = StyleSheet.create({
     card: {
         

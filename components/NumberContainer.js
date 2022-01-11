@@ -3,6 +3,8 @@ import {View, Text, StyleSheet} from 'react-native';
 import { Colors } from 'react-native/Libraries/NewAppScreen';
 import colors from '../constants/colors';
 
+
+// Numbers Card
 const NumberContainer = props => {
     return (
        <View style={styles.container}> 
@@ -11,6 +13,7 @@ const NumberContainer = props => {
     )
 }
 
+//Style sheet
 const styles = StyleSheet.create({
     container: {
         borderWidth: 2, 

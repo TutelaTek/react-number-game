@@ -1,12 +1,13 @@
 import React from 'react';
 import { TextInput, StyleSheet } from 'react-native';
 
+// input card
 const Input = props => {
     return <TextInput {...props} style={{...styles.input, ...props.style }}/>
 };
 
 
-
+// Style sheet
 const styles = StyleSheet.create({
     input: {
         height: 30,

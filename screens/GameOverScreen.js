@@ -1,7 +1,9 @@
 import React from 'react';
-import { View, Text, StyleSheet, Button, Image} from 'react-native';
+import { View, Text, StyleSheet, Button, Image, Dimensions} from 'react-native';
 import colors from '../constants/colors';
 
+
+// Page
 const GameOverScreen = props => {
     return (
         <View style={styles.screen}>
@@ -23,6 +25,8 @@ const GameOverScreen = props => {
     );
 };
 
+
+//Style sheet
 const styles = StyleSheet.create({
     screen: {
         flex: 1,
@@ -36,12 +40,13 @@ const styles = StyleSheet.create({
     },
     imageContainer:{
 
-        borderRadius: 150,
+        borderRadius: Dimensions.get('window').width * 0.7 /2,
         borderWidth: 3,
         borderColor: colors.primary,
-        width: 300,
-        height: 300,
+        width: Dimensions.get('window').width * 0.7,
+        height: Dimensions.get('window').width * 0.7,
         overflow: 'hidden',
+        marginVertical: Dimensions.get('window').height / 20,
     },
     hightlight: {
         color: 'red',

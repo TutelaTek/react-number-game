@@ -1,5 +1,5 @@
 import React, {useState, useRef,  useEffect} from 'react';
-import {View, Text, StyleSheet, Button, Alert} from 'react-native';
+import {View, Text, StyleSheet, Button, Alert, Dimensions} from 'react-native';
 import NumberContainer from '../components/NumberContainer';
 import Card from '../components/Card';
 
@@ -16,19 +16,25 @@ const generateRandomBetween = (min, max, exclude) => {
 }
 
 const GameScreen = props => {
+
+    // States
     const [currentGuess, setCurrentGuess] = useState(generateRandomBetween(1, 100, props.userChoice));
     const currentLow = useRef(1);
     const currentHigh = useRef(100);
     const [rounds, setRounds] = useState(0);
     
+    // props 
     const {userChoice, onGameOver} = props;
 
+    // effect state
     useEffect(() => {
         if(currentGuess === props.userChoice){
             props.onGameOver(rounds);
         }
     }, [currentGuess, userChoice, onGameOver]);
 
+
+    // Handlers
     const nextGuessHandler = direction => {
         if((direction === 'lower' && currentGuess < props.userChoice) || (direction === 'higher' && currentGuess > props.userChoice )) {
             Alert.alert('Don\'t lie!', 'You Know this is wrong',  [{text: 'Sorry!', style: 'cancel'}]);
@@ -46,7 +52,7 @@ const GameScreen = props => {
         setRounds(curRounds => curRounds + 1);
     };
 
-    
+    // Page
     return (
         <View style={styles.screen}>
             <Text>Opponent's Guess</Text>
@@ -59,6 +65,8 @@ const GameScreen = props => {
     )
 };
 
+
+// Style sheet
 const styles = StyleSheet.create({
     screen: {
         flex: 1,
@@ -68,7 +76,7 @@ const styles = StyleSheet.create({
     buttonContainer: {
         flexDirection: 'row',
         justifyContent: 'space-around',
-        marginTop: 20,
+        marginTop: Dimensions.get('window').height > 600 ? 30 : 5,
         width: 300,
         maxWidth: '80%',
     }
